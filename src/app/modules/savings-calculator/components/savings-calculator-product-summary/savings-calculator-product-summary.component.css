@@ -1,0 +1,27 @@
+.savings-showcase-wrapper{
+
+}
+
+.savings-showcase-text{
+    font-weight: bold;
+}
+
+.savings-showcase-value{
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: #2A285E;
+}
+
+.product-savings-title{
+    color: #2A285E;
+    font-weight: bold;
+}
+
+.product-savings-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #2A285E;
+    padding: 10px;
+    border-radius: 5px;
+}
