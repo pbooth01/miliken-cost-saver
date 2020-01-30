@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -9,13 +10,19 @@ import { SavingsCalculatorFormComponent } from './components/savings-calculator-
 import { SavingsCalculatorChartSummaryComponent } from './components/savings-calculator-chart-summary/savings-calculator-chart-summary.component';
 import { SavingsCalculatorProductSummaryComponent } from './components/savings-calculator-product-summary/savings-calculator-product-summary.component';
 
+import { CostCalculationService } from './providers/cost-calculation-service/cost-calculation.service'
+
 
 
 @NgModule({
   declarations: [SavingsCalculatorPageComponent, SavingsCalculatorFormComponent, SavingsCalculatorChartSummaryComponent, SavingsCalculatorProductSummaryComponent],
   imports: [
     CommonModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ReactiveFormsModule
+  ],
+  providers:[
+    CostCalculationService
   ]
 })
 export class SavingsCalculatorModule { }

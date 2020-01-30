@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-savings-calculator-chart-summary',
@@ -7,18 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SavingsCalculatorChartSummaryComponent implements OnInit {
 
-  single: any[] = [
+  @Input() PowerProSavingsPercentage: number = 0;
+  @Input() VictoryTapeSavingsPercentage: number = 0;
+  @Input() PowerTapeSavingsPercentage: number = 0;
+
+  chartInput: any[] = [
     {
-      "name": "Power flex + PowerPro",
-      "value": 4.8
+      "name": "PowerFlex + PowerPro",
+      "value": this.PowerProSavingsPercentage
     },
     {
-      "name": "Power flex + VictoryTape",
-      "value": 5.8
+      "name": "PowerFlex + VictoryTape",
+      "value": this.VictoryTapeSavingsPercentage
     },
     {
-      "name": "Power flex + PowerTape",
-      "value": 7.5
+      "name": "PowerFlex + PowerTape",
+      "value": this.PowerTapeSavingsPercentage
     }
   ];
 
@@ -34,13 +38,27 @@ export class SavingsCalculatorChartSummaryComponent implements OnInit {
   showYAxisLabel = true;
   yAxisLabel = 'Annual Savings Percentage';
 
-  /*colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };*/
-
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
+    this.chartInput = [
+      {
+        "name": "PowerFlex + PowerPro",
+        "value": Number.isNaN(changes.PowerProSavingsPercentage.currentValue) ? 0 : changes.PowerProSavingsPercentage.currentValue
+      },
+      {
+        "name": "PowerFlex + VictoryTape",
+        "value": Number.isNaN(changes.VictoryTapeSavingsPercentage.currentValue) ? 0 : changes.VictoryTapeSavingsPercentage.currentValue
+      },
+      {
+        "name": "PowerFlex + PowerTape",
+        "value": Number.isNaN(changes.PowerTapeSavingsPercentage.currentValue) ? 0 : changes.PowerTapeSavingsPercentage.currentValue
+      }
+    ];
   }
 
 }
