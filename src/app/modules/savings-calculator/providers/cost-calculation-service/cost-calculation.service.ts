@@ -24,17 +24,24 @@ export class CostCalculationService {
 
   constructor() { }
 
+  cleanInput(input: number){
+    if(input == null || Number.isNaN(input) || input < 0){
+      return null;
+    }
+    return input;
+  }
+
   calculateCompetingProductCost(
-    TufSkinBottles: number, HLPadCases: number, PreWrapCases: number, LCWhiteTapeCases: number, 
-    HCWhiteTapeCases: number, STECases: number, CohesiveCases: number){
+    TufSkinBottles: number = 0, HLPadCases: number = 0, PreWrapCases: number = 0, LCWhiteTapeCases: number = 0, 
+    HCWhiteTapeCases: number = 0, STECases: number = 0, CohesiveCases: number = 0){
       return (
-        (this.competing_product_cost_mapper["TufSkin"] * TufSkinBottles) +
-        (this.competing_product_cost_mapper["HLPads"] * HLPadCases) +
-        (this.competing_product_cost_mapper["PreWrap"] * PreWrapCases) +
-        (this.competing_product_cost_mapper["LCWhiteTape"] * LCWhiteTapeCases) +
-        (this.competing_product_cost_mapper["HCWhiteTape"] * HCWhiteTapeCases) +
-        (this.competing_product_cost_mapper["STE"] * STECases) +
-        (this.competing_product_cost_mapper["Cohesive"] * CohesiveCases))
+        (this.competing_product_cost_mapper["TufSkin"] * this.cleanInput(TufSkinBottles)) +
+        (this.competing_product_cost_mapper["HLPads"] * this.cleanInput(HLPadCases)) +
+        (this.competing_product_cost_mapper["PreWrap"] * this.cleanInput(PreWrapCases)) +
+        (this.competing_product_cost_mapper["LCWhiteTape"] * this.cleanInput(LCWhiteTapeCases)) +
+        (this.competing_product_cost_mapper["HCWhiteTape"] * this.cleanInput(HCWhiteTapeCases)) +
+        (this.competing_product_cost_mapper["STE"] * this.cleanInput(STECases)) +
+        (this.competing_product_cost_mapper["Cohesive"] * this.cleanInput(CohesiveCases)))
   }
 
   calculateMillikenProductCost(PowerFlexCases: number, ProductTapeCases: number, ProductName: string){

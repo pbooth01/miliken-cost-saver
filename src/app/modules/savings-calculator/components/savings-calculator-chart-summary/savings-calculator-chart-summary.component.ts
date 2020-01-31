@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { UrlSegmentGroup } from '@angular/router';
 
 @Component({
   selector: 'app-savings-calculator-chart-summary',
@@ -26,17 +27,18 @@ export class SavingsCalculatorChartSummaryComponent implements OnInit {
     }
   ];
 
-  view: any[] = [450, 350];
+  view: any[] = [420, 340];
 
   // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
   xAxisLabel = 'Product';
   showYAxisLabel = true;
   yAxisLabel = 'Annual Savings Percentage';
+  roundEdges = false
 
   constructor() { }
 
@@ -45,20 +47,25 @@ export class SavingsCalculatorChartSummaryComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    this.chartInput = [
-      {
-        "name": "PowerFlex + PowerPro",
-        "value": Number.isNaN(changes.PowerProSavingsPercentage.currentValue) ? 0 : changes.PowerProSavingsPercentage.currentValue
-      },
-      {
-        "name": "PowerFlex + VictoryTape",
-        "value": Number.isNaN(changes.VictoryTapeSavingsPercentage.currentValue) ? 0 : changes.VictoryTapeSavingsPercentage.currentValue
-      },
-      {
-        "name": "PowerFlex + PowerTape",
-        "value": Number.isNaN(changes.PowerTapeSavingsPercentage.currentValue) ? 0 : changes.PowerTapeSavingsPercentage.currentValue
+      //Only update if I have all three savings percentage available to chart.
+      if(Object.keys(changes).length === 3){
+        // clear the data array
+        this.chartInput = [];
+        this.chartInput = [
+          {
+            "name": "PowerFlex + PowerPro",
+            "value": Number.isNaN(changes.PowerProSavingsPercentage.currentValue) ? 0 : changes.PowerProSavingsPercentage.currentValue
+          },
+          {
+            "name": "PowerFlex + VictoryTape",
+            "value": Number.isNaN(changes.VictoryTapeSavingsPercentage.currentValue) ? 0 : changes.VictoryTapeSavingsPercentage.currentValue
+          },
+          {
+            "name": "PowerFlex + PowerTape",
+            "value": Number.isNaN(changes.PowerTapeSavingsPercentage.currentValue) ? 0 : changes.PowerTapeSavingsPercentage.currentValue
+          }
+        ];
       }
-    ];
   }
 
 }

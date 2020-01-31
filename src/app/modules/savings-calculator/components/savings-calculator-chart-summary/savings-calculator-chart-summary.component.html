@@ -5,7 +5,6 @@
     <div class="row chart-content-wrapper">
         <ngx-charts-bar-vertical
             [view]="view"
-            
             [results]="chartInput"
             [gradient]="gradient"
             [xAxis]="showXAxis"
@@ -15,7 +14,8 @@
             [showYAxisLabel]="showYAxisLabel"
             [xAxisLabel]="xAxisLabel"
             [yAxisLabel]="yAxisLabel"
-            (select)="onSelect($event)">
+            [roundEdges]="roundEdges"
+        >
         </ngx-charts-bar-vertical>
     </div>
 </div>
