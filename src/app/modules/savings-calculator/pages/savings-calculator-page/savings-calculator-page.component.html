@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm form-wrapper">
+                <app-savings-calculator-form
+                [productForm]="productForm"
+                [calculateSavings]="calculateSavings"
+                ></app-savings-calculator-form>
+            </div>
+            <div class="col-sm savings-output-wrapper">
+                <div class="container">
+                    <div class="row justify-content-center output-content">
+                       <app-savings-calculator-product-summary
+                       [PowerProSavings]="PowerProSavings"
+                       [VictoryTapeSavings]="VictoryTapeSavings"
+                       [PowerTapeSavings]="PowerTapeSavings"
+                       ></app-savings-calculator-product-summary
+                        > 
+                    </div>
+                    <div class="row justify-content-center output-content">
+                        <app-savings-calculator-chart-summary class="chart-content-wrapper"
+                        [PowerProSavingsPercentage]="PowerProSavingsPercentage"
+                        [VictoryTapeSavingsPercentage]="VictoryTapeSavingsPercentage"
+                        [PowerTapeSavingsPercentage]="PowerTapeSavingsPercentage"
+                        ></app-savings-calculator-chart-summary> 
+                    </div>
+                </div>
+          </div>
+    </div>
+</div>
