@@ -10,7 +10,7 @@ export class CostCalculationService {
     HLPads: 25.00,
     PreWrap: 47.00,
     LCWhiteTape: 42.00,
-    HCWhiteTape: 55.00,
+    HCWhiteTape: 70.00,
     STE: 42.00,
     Cohesive: 26.00
   }
